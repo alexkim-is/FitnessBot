@@ -1,10 +1,12 @@
-const express = require('express')
+const app = require('express')()
 const bodyParser = require('body-parser')
 
-const app = express()
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true}))
 
-app.get('/welcome', (req, res) => {
-  res.send('Hello, welcome to our server')
+app.post('/db', function (req, res) {
+  console.log(req.body)
+  res.json(req.body)
 })
 
 app.listen(3000, () => {console.log('Listening on port 3000')})
