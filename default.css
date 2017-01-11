@@ -1,3 +1,38 @@
-h1 {
-  color: #87CEFA;
+
+body {
+  background: url("https://9to5mac.files.wordpress.com/2014/08/yosemite-4.jpg?quality=82&strip=all") no-repeat center center;
+  background-size: cover;
+}
+
+#f-name, #f-age, #f-mobile{
+  margin-top: 5px;
+  padding: 5px;
+  border: none;
+  border-bottom: 2px solid #e1dcdc;
+  font-size: 18px;
+  background: #fcfafa;
+  color: grey;
+}
+
+#submit {
+  padding: 5px;
+  border: none;
+  font-size: 12px;
+  background-color: #C8ABD1;
+  width: 150px;
+}
+
+#submit:hover {
+  cursor: pointer;
+  transform: scale(1.03)
+}
+
+
+.f-container {
+  background: #faf5f5;
+  width: 270px;
+  margin: auto;
+  padding: 50px;
+  opacity: 0.9;
+  text-align: center;
 }

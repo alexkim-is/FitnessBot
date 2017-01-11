@@ -7,19 +7,19 @@
   <body>
     <div>
       <h1 id="hello">FitnessBot Here</h1>
-      <p id="motivation"></p>
+      <span id="clock-message"></span>
     </div>
-    <form id="sign-up">
-      <div class="active">
-        <input
-          type="text"
-          class="active"
-          placeholder="123-123-1234">
-        <span>
-          <button class="active" type="submit">Sign Up</button>
-        </span>
+    <div id="fitness-goals">
+    </div>
+      <div class="f-container">
+        <h3>Sign up here!</h3>
+        <form action="myserver/db" method="post">
+          <input type="text" id="f-name" placeholder="Your Name"><br>
+          <input type="number" id="f-age" placeholder="Age" minlength="1" maxlength="2"><br>
+          <input type="tel" id="f-mobile" placeholder="Mobile #" minlength="10" maxlength="12"><br>
+          <button type="submit" id="submit">SIGN UP</button>
+        </form>
       </div>
-    </form>
     <script src="index.js"></script>
   </body>
 </html>
