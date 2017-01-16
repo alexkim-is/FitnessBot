@@ -14,7 +14,17 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true}))
 app.use(methodOverride('_method'))
 
-//SERVER respondds to FRONTEND when a request is made at URL.
+//Get data from database every 10 sec
+var intervalOne = setInterval(getData, 8000)
+
+function getData() {
+  var result = knex.select('mobile').from('users')
+    .then((item) => console.log(item))
+      }
+    }
+}
+
+//Store user data in database
 app.post('/signup', function (req, res)  {
   knex('users')
     .insert({
