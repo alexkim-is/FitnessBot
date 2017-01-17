@@ -12,7 +12,7 @@ body {
   text-align: center;
 }
 
-#f-name, #f-age, #f-mobile, #b-mobile {
+#f-name, #f-age, #f-mobile, #b-mobile, #f-time {
   margin-top: 5px;
   padding: 5px;
   border: none;
@@ -22,11 +22,11 @@ body {
   color: grey;
 }
 
-#f-name:hover, #f-age:hover, #f-mobile:hover{
+#f-name:hover, #f-age:hover, #f-mobile:hover, #f-time:hover {
   transform: scale(.97);
 }
 
-#submit {
+#submit, #submit2 {
   margin-top: 10px;
   padding: 5px;
   border: none;
@@ -36,7 +36,7 @@ body {
   width: 150px;
 }
 
-#submit:hover {
+#submit:hover, #submit2:hover {
   cursor: pointer;
   transform: scale(1.03);
 }

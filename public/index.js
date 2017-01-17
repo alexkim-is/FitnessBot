@@ -28,10 +28,3 @@ function makeGoalButton (name, url) {
 var muscle = makeGoalButton('muscle', 'https://goo.gl/BnXbr9')
 var fat = makeGoalButton('fat', 'https://goo.gl/IbMmFB')
 var health = makeGoalButton('health', 'https://goo.gl/uJ7yH6')
-
-// An EventListener when a goal is selected.
-// $theGoals.addEventListener('click', function (event) {
-//   event.preventDefault()
-//   if (event.target.className !== 'goal-pic') return
-//   if (event.target.className == 'goal-pic'+ name) {return}
-// })
