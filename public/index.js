@@ -6,6 +6,7 @@ var clockMessage = document.getElementById('clock-message')
 clockMessage.textContent = daysPassed + " days have passed in 2017. You have "
 + hoursLeft + " hours to get in a great workout today!"
 
+
 //Selecting Fitness Goals
 var $goals = document.getElementById('goals')
 
@@ -28,6 +29,7 @@ function makeGoalButton (name, url) {
 var muscle = makeGoalButton('muscle', 'https://goo.gl/BnXbr9')
 var fat = makeGoalButton('fat', 'https://goo.gl/IbMmFB')
 var health = makeGoalButton('health', 'https://goo.gl/uJ7yH6')
+
 
 //FETCH for CREATING user account
 var $formSignup = document.querySelector('#signup')
@@ -55,25 +57,27 @@ function sendJSON(data) {
     .catch(error => console.log(error))
 }
 
+
 //FETCH for DELETING user account
 var $formUnsub = document.querySelector('#unsub')
 $formUnsub.addEventListener('submit', formUnsub)
 function formUnsub(event) {
   event.preventDefault()
   const newObject = new FormData(event.target)
-  const data = {
-    mobile: newObject.get('mobile')
+  const dataDel = {
+    mobile: newObject.get('b-mobile')
   }
-  sendJsonDelete(data)
+  sendJsonDelete(dataDel)
 }
 
-function sendJsonDelete(data) {
+function sendJsonDelete(item) {
   const options = {
     method: 'DELETE',
-    header: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(item)
   }
   return fetch('/unsub', options)
-    .then( res => res.json())
+    .then( () => console.log('Good-bye'))
     .catch(error => console.log(error))
+
 }

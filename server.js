@@ -1,6 +1,5 @@
 const express        = require('express')
 const bodyParser     = require('body-parser')
-const methodOverride = require('method-override')
 const pg             = require('pg')
 const knex           = require('knex')({
   client: 'postgresql',
@@ -14,12 +13,11 @@ const app = express()
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true}))
-app.use(methodOverride('_method'))
 app.use(express.static('public'))
 
 
 //Store user data in database
-app.post('/signup', function (req, res)  {
+app.post('/signup', function (req, res) {
   knex('users')
     .insert({
       name: req.body.name,
@@ -32,13 +30,13 @@ app.post('/signup', function (req, res)  {
     .then(() => res.send('Thank you for joining'))
 })
 
+
 //DELETE user data in database
 app.delete('/unsub', function (req, res) {
   knex('users')
     .where('mobile', '=', req.body.mobile)
     .del()
-    .then(() => res.send('See you again.'))
+    .then(() => res.sendStatus(204))
 })
-
 
 app.listen(3000, () => { console.log('Listening on port 3000')})
