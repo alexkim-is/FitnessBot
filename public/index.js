@@ -28,3 +28,52 @@ function makeGoalButton (name, url) {
 var muscle = makeGoalButton('muscle', 'https://goo.gl/BnXbr9')
 var fat = makeGoalButton('fat', 'https://goo.gl/IbMmFB')
 var health = makeGoalButton('health', 'https://goo.gl/uJ7yH6')
+
+//FETCH for CREATING user account
+var $formSignup = document.querySelector('#signup')
+$formSignup.addEventListener('submit', formSubmit)
+function formSubmit(event) {
+  event.preventDefault()
+  const newObject = new FormData(event.target)
+  const data = {
+    name: newObject.get('name'),
+    age: newObject.get('age'),
+    mobile: newObject.get('mobile'),
+    schedule: newObject.get('schedule')
+  }
+  sendJSON(data)
+}
+
+function sendJSON(data) {
+  const options = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }
+  return fetch('/signup', options)
+    .then(res => res.json())
+    .catch(error => console.log(error))
+}
+
+//FETCH for DELETING user account
+var $formUnsub = document.querySelector('#unsub')
+$formUnsub.addEventListener('submit', formUnsub)
+function formUnsub(event) {
+  event.preventDefault()
+  const newObject = new FormData(event.target)
+  const data = {
+    mobile: newObject.get('mobile')
+  }
+  sendJsonDelete(data)
+}
+
+function sendJsonDelete(data) {
+  const options = {
+    method: 'DELETE',
+    header: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }
+  return fetch('/unsub', options)
+    .then( res => res.json())
+    .catch(error => console.log(error))
+}
