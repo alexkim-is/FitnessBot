@@ -4,6 +4,7 @@
   "description": "I am your workout accountability partner.",
   "main": "server.js",
   "dependencies": {
+    "apiai": "^3.0.3",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "knex": "^0.12.6",
@@ -11,16 +12,13 @@
     "pg": "^6.1.2",
     "twilio": "^2.11.1"
   },
-
   "devDependencies": {},
-
   "scripts": {
     "watch": "nodemon .",
     "migrate:make": "knex migrate:make",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alexkim-is/FitnessBot.git"

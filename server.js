@@ -1,4 +1,4 @@
-const app            = require('express')()
+const express        = require('express')
 const bodyParser     = require('body-parser')
 const methodOverride = require('method-override')
 const pg             = require('pg')
@@ -10,22 +10,34 @@ const knex           = require('knex')({
   }
 })
 
+const app = express()
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true}))
 app.use(methodOverride('_method'))
+app.use(express.static('public'))
 
-app.post('/signup', function (req, res) {
+
+//Store user data in database
+app.post('/signup', function (req, res)  {
   knex('users')
-    .insert({name: req.body.name, age: req.body.age, mobile: req.body.num})
+    .insert({
+      name: req.body.name,
+      age: req.body.age,
+      mobile: req.body.mobile,
+      //.replace(/-/g, '')
+      schedule: req.body.schedule
+    })
     .returning('name')
-    .then(() => res.sendStatus(201))
+    .then(() => res.send('Thank you for joining'))
 })
 
+//DELETE user data in database
 app.delete('/unsub', function (req, res) {
   knex('users')
-    .where('mobile', '=', req.body.num)
+    .where('mobile', '=', req.body.mobile)
     .del()
-    .then(() => res.sendStatus(204))
+    .then(() => res.send('See you again.'))
 })
 
 

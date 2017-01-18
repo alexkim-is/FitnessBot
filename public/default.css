@@ -1,7 +1,7 @@
 
 body {
   background: url("http://cdn.iphonehacks.com/wp-content/uploads/2014/08/Yosemite-4-22-1024x1024.jpg"), linear-gradient(to bottom, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: top no-repeat;
 }
@@ -12,7 +12,7 @@ body {
   text-align: center;
 }
 
-#f-name, #f-age, #f-mobile, #b-mobile {
+#f-name, #f-age, #f-mobile, #b-mobile, #f-time {
   margin-top: 5px;
   padding: 5px;
   border: none;
@@ -22,11 +22,11 @@ body {
   color: grey;
 }
 
-#f-name:hover, #f-age:hover, #f-mobile:hover{
+#f-name:hover, #f-age:hover, #f-mobile:hover, #f-time:hover {
   transform: scale(.97);
 }
 
-#submit {
+#submit, #submit2 {
   margin-top: 10px;
   padding: 5px;
   border: none;
@@ -36,17 +36,17 @@ body {
   width: 150px;
 }
 
-#submit:hover {
+#submit:hover, #submit2:hover {
   cursor: pointer;
   transform: scale(1.03);
 }
 
-.f-container, .b-container {
+.container {
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
   padding: 50px;
-  width: 250px;
+  width: 45%;
   opacity: .85;
   background: #faf5f5;
   text-align: center;
@@ -69,4 +69,25 @@ body {
 
 #b-mobile:hover{
   transform: scale(.97);
+}
+
+/*figure*/
+.goal-container {
+  display: inline-block;
+  background-color: lightblue;
+  align-items: baseline;
+  text-align: center;
+  width: auto;
+  margin: 2%;
+}
+/*imagepicture*/
+.goal-pic{
+  height: 50px;
+  border: 1px solid black;
+}
+
+/*just text*/
+.goal-text {
+  display: block;
+  background-color: lightblue;
 }
