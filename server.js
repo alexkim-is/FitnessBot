@@ -1,7 +1,7 @@
 const express        = require('express')
 const bodyParser     = require('body-parser')
-const methodOverride = require('method-override')
 const pg             = require('pg')
+const client         = require('twilio')(process.env.accountSid, process.env.authToken)
 const knex           = require('knex')({
   client: 'postgresql',
   connection: {
@@ -14,7 +14,6 @@ const app = express()
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true}))
-app.use(methodOverride('_method'))
 app.use(express.static('public'))
 
 
@@ -32,6 +31,7 @@ app.post('/signup', function (req, res)  {
     .then(() => res.send('Thank you for joining'))
 })
 
+
 //DELETE user data in database
 app.delete('/unsub', function (req, res) {
   knex('users')
@@ -41,4 +41,40 @@ app.delete('/unsub', function (req, res) {
 })
 
 
-app.listen(3000, () => { console.log('Listening on port 3000')})
+//TIME CALCULATOR variable and functions
+var today = new Date()
+var hours = today.getHours()
+var minutes = today.getMinutes()
+var hourNow = `${hours}`
+var minuteNow = `${minutes}`
+
+function filterByHour(item) {
+  var scheduleHour = item.schedule.slice(0, 2)
+  var scheduleMinute = item.schedule.slice(3,5)
+  if (hourNow == scheduleHour && minuteNow < scheduleMinute) {
+      return item
+  }
+}
+
+// /Get data from database every x seconds.
+var intervalOne = setInterval(getData, 6000)
+function getData() {
+  var result = knex('users')
+    .returning('name', 'mobile', 'schedule')
+    .orderBy('schedule')
+    // .then((data) => JSON.stringify(data))
+    .then((data) => data.filter(filterByHour))
+    .then((data) => console.log(data))
+  return result
+}
+
+
+function sendText (name) {
+  client.messages.create({
+    to: '+17149442352',
+    from: '+17072101123',
+    body: `Hi there, ${name}. Your workout is coming up soon. Are you ready?.`
+  })
+}
+
+app.listen(3000, () => console.log('Listening on port 3000'))
