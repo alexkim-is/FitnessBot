@@ -23,8 +23,7 @@ app.post('/signup', function (req, res)  {
     .insert({
       name: req.body.name,
       age: req.body.age,
-      mobile: req.body.mobile,
-      //.replace(/-/g, '')
+      mobile: req.body.mobile.replace(/-/g, ''),
       schedule: req.body.schedule
     })
     .returning('name')
@@ -56,25 +55,24 @@ function filterByHour(item) {
   }
 }
 
-// /Get data from database every x seconds.
-var intervalOne = setInterval(getData, 6000)
+// /Get data from database every 15 seconds.
+// var intervalOne = setInterval(getData, 10000)
 function getData() {
   var result = knex('users')
     .returning('name', 'mobile', 'schedule')
-    .orderBy('schedule')
-    // .then((data) => JSON.stringify(data))
     .then((data) => data.filter(filterByHour))
-    .then((data) => console.log(data))
+    .then((data) => data.map(sendText))
   return result
 }
 
 
-function sendText (name) {
-  client.messages.create({
-    to: '+17149442352',
-    from: '+17072101123',
-    body: `Hi there, ${name}. Your workout is coming up soon. Are you ready?.`
-  })
+function sendText(data) {
+    client.messages.create({
+      to: `+1${data.mobile}`,
+      from: '+17072101123',
+      body: `Hi there, ${data.name}. Yo sleepy head. Your workout session is coming up. Are you ready?.`
+    })
 }
+
 
 app.listen(3000, () => console.log('Listening on port 3000'))
