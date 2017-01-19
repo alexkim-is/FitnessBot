@@ -22,11 +22,9 @@ app.post('/signup', function (req, res) {
     .insert({
       name: req.body.name,
       age: req.body.age,
-      mobile: req.body.mobile,
-      //.replace(/-/g, '')
+      mobile: req.body.mobile.replace(/-/g, ''),
       schedule: req.body.schedule
     })
-    .returning('name')
     .then(() => res.send('Thank you for joining'))
 })
 
