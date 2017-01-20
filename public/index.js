@@ -30,7 +30,6 @@ var muscle = makeGoalButton('muscle', 'https://goo.gl/BnXbr9')
 var fat = makeGoalButton('fat', 'https://goo.gl/IbMmFB')
 var health = makeGoalButton('health', 'https://goo.gl/uJ7yH6')
 
-
 //FETCH for CREATING user account
 var $formSignup = document.querySelector('#signup')
 $formSignup.addEventListener('submit', formSubmit)
@@ -72,12 +71,12 @@ function formUnsub(event) {
 
 function sendJsonDelete(item) {
   const options = {
-    method: 'DELETE',
+    method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(item)
   }
   return fetch('/unsub', options)
-    .then( () => console.log('Good-bye'))
+    .then(res => res.json())
     .catch(error => console.log(error))
 
 }
