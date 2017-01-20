@@ -15,14 +15,22 @@
 }
 
 #unsub-box {
-  background: url("https://goo.gl/qn9Nhx") no-repeat;
+  background: url("https://goo.gl/Z4wyHv") no-repeat;
   background-size: cover;
 }
 
-#clock-message, h1 {
+#message {
+  background-color: lightgrey;
+  height: 180px;
+}
+
+#clock-message {
+  position: absolute;
   background-color: lightyellow;
-  left: 33%;
+  margin-left: 33%;
+  margin-top: 50px;
   width: 33%;
+  font-size: 18px;
   text-align: center;
 }
 
