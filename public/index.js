@@ -6,6 +6,7 @@ var clockMessage = document.getElementById('clock-message')
 clockMessage.textContent = daysPassed + " days have passed in 2017. You have "
 + hoursLeft + " hours to get in a great workout today!"
 
+
 //Selecting Fitness Goals
 var $goals = document.getElementById('goals')
 
