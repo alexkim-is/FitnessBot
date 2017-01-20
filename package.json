@@ -4,7 +4,6 @@
   "description": "I am your workout accountability partner.",
   "main": "server.js",
   "dependencies": {
-    "apiai": "^3.0.3",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "knex": "^0.12.6",

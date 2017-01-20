@@ -26,7 +26,6 @@ app.post('/signup', function (req, res)  {
       mobile: req.body.mobile.replace(/-/g, ''),
       schedule: req.body.schedule
     })
-    .returning('name')
     .then(() => res.send('Thank you for joining'))
 })
 
@@ -51,26 +50,31 @@ function filterByHour(item) {
   var scheduleHour = item.schedule.slice(0, 2)
   var scheduleMinute = item.schedule.slice(3,5)
   if (hourNow == scheduleHour && minuteNow < scheduleMinute) {
-      return item
+    return item
+  }
+  if (hourNow == scheduleHour-1 && scheduleMinute < 15) {
+    return item
   }
 }
 
 // /Get data from database every 15 seconds.
-// var intervalOne = setInterval(getData, 10000)
+// var intervalOne = setInterval(getData, 15000)
 function getData() {
   var result = knex('users')
     .returning('name', 'mobile', 'schedule')
     .then((data) => data.filter(filterByHour))
     .then((data) => data.map(sendText))
+    .catch((error) => console.error(error))
   return result
 }
 
 
+//Send out text via Twilio
 function sendText(data) {
     client.messages.create({
       to: `+1${data.mobile}`,
       from: '+17072101123',
-      body: `Hi there, ${data.name}. Yo sleepy head. Your workout session is coming up. Are you ready?.`
+      body: `Hi there, ${data.name}. Your workout session is coming up. Are you ready to dominate?`
     })
 }
 
