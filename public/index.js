@@ -70,12 +70,12 @@ function formUnsub(event) {
 
 function sendJsonDelete(item) {
   const options = {
-    method: 'DELETE',
+    method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(item)
   }
   return fetch('/unsub', options)
-    .then( () => console.log('Good-bye'))
+    .then(res => res.json())
     .catch(error => console.log(error))
 
 }

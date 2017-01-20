@@ -7,6 +7,7 @@ exports.up = function(knex, Promise) {
     table.smallint('age')
     table.varchar('mobile')
     table.time('schedule')
+    table.varchar('status')
   })
   return query;
 };

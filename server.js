@@ -24,18 +24,21 @@ app.post('/signup', function (req, res)  {
       name: req.body.name,
       age: req.body.age,
       mobile: req.body.mobile.replace(/-/g, ''),
-      schedule: req.body.schedule
+      schedule: req.body.schedule,
+      status: 'active'
     })
-    .then(() => res.send('Thank you for joining'))
+    .then(() => res.send(`${req.body.name}, welcome to the club!`))
+    .catch((err) => console.error(err))
 })
 
 
 //DELETE user data in database
-app.delete('/unsub', function (req, res) {
+app.post('/unsub', function (req, res) {
   knex('users')
     .where('mobile', '=', req.body.mobile)
-    .del()
+    .update({status: 'inactive'})
     .then(() => res.send('See you again.'))
+    .catch((err) => console.error(err))
 })
 
 
@@ -57,17 +60,17 @@ function filterByHour(item) {
   }
 }
 
-// /Get data from database every 15 seconds.
-// var intervalOne = setInterval(getData, 15000)
+// /Get data from database every 15 minutes(900000s=15min, )
+// var intervalOne = setInterval(getData, 900000)
 function getData() {
   var result = knex('users')
+    .where('status', '=', 'active')
     .returning('name', 'mobile', 'schedule')
     .then((data) => data.filter(filterByHour))
     .then((data) => data.map(sendText))
     .catch((error) => console.error(error))
   return result
 }
-
 
 //Send out text via Twilio
 function sendText(data) {
