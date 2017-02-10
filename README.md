@@ -1,7 +1,7 @@
 # FitnessBot
 I am your workout accountability partner.
 
-Sign-up by entering your info along with your preferred workout schedule. I will send you a daily reminder. You can also talk to me and I will encourage you. You may carry on a conversation or ask me tell you jokes. I usually tell jokes when I don't understand what you are saying. 
+Sign-up by entering your info along with your preferred workout schedule. I will send you a daily reminder. You can also talk to me and ask questions. I will try to encourage you. I can carry on a decent conversation. If I don't understand you, I'll just tell you a joke instead of being annoying like Siri.
 
 ![screen shot 2017-02-10 at 2 04 02 pm](https://cloud.githubusercontent.com/assets/22905837/22846375/097b555c-ef9c-11e6-800f-f6cce031ce9c.png)
 
