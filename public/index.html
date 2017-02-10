@@ -6,17 +6,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   </head>
   <body>
-    <div>
-      <h1 id="hello">FitnessBot Here</h1>
+    <div id="message">
       <div id="clock-message"></div>
     </div>
     <div id="goal-box">
-      <div class="container" id="goals">
+      <div class="container" id="box1">
         <h3>Pick your goal</h3>
       </div>
-    </div>
-    <div id="signup-box">
-      <div class="container">
+      <div class="container" id="box2">
         <h3>Sign up here!</h3>
         <form id="signup">
           <input type="text" name="name" id="f-name" placeholder="Your Name" required><br>
@@ -28,8 +25,17 @@
         </form>
       </div>
     </div>
+
+    <div id="chatbox">
+      <p id="chatfont">You can chat with me right here!</p>
+      <iframe id="chat" width="350" height="430" src="https://console.api.ai/api-client/demo/embedded/eeba7693-9f28-4470-9e8f-654f32bbdefb"></iframe>
+    </div>
+
     <div id="unsub-box">
-      <div class="container">
+    </div>
+    <div id="motivation">
+      <p id="blah"></p>
+      <div class="container" id="box3">
         <h3>Unsubscribe</h3>
         <form id="unsub">
           <input type="tel" name="b-mobile" id="b-mobile" placeholder="Mobile #" minlength="10" maxlength="11" required><br>

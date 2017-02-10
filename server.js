@@ -2,6 +2,8 @@ const express        = require('express')
 const bodyParser     = require('body-parser')
 const pg             = require('pg')
 const client         = require('twilio')(process.env.accountSid, process.env.authToken)
+//export accountSid=//
+
 const knex           = require('knex')({
   client: 'postgresql',
   connection: {
@@ -15,7 +17,6 @@ const app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true}))
 app.use(express.static('public'))
-
 
 //Store user data in database
 app.post('/signup', function (req, res) {
@@ -62,7 +63,8 @@ function filterByHour(item) {
 }
 
 // /Get data from database every 15 minutes(900000s=15min, )
-// var intervalOne = setInterval(getData, 900000)
+// var intervalOne = setInterval(getData, 5000)
+
 function getData() {
   var result = knex('users')
     .where('status', '=', 'active')
@@ -73,12 +75,14 @@ function getData() {
   return result
 }
 
+getData()
+
 //Send out text via Twilio
 function sendText(data) {
     client.messages.create({
       to: `+1${data.mobile}`,
       from: '+17072101123',
-      body: `Hi there, ${data.name}. Your workout session is coming up. Are you ready to dominate?`
+      body: `Hi there, ${data.name}. Your workout session is coming up. Are you ready?`
     })
 }
 

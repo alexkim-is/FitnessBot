@@ -2,13 +2,15 @@
 //Message at the top
 var daysPassed = new Date().getDate()
 var hoursLeft = 23.5 - new Date().getHours()
+var message = document.querySelector('#message')
 var clockMessage = document.getElementById('clock-message')
 clockMessage.textContent = daysPassed + " days have passed in 2017. You have "
 + hoursLeft + " hours to get in a great workout today!"
+message.appendChild(clockMessage)
 
 
 //Selecting Fitness Goals
-var $goals = document.getElementById('goals')
+var $goals = document.getElementById('box1')
 
 function makeGoalButton (name, url) {
   var $container = document.createElement('figure')
@@ -20,6 +22,7 @@ function makeGoalButton (name, url) {
   $text.classList.add('goal-text')
   $goal.classList.add('goal-pic', name)
   $goal.setAttribute('src', url)
+  // $goal.setAttribute('onclick', clickImg)
   $container.appendChild($goal)
   $container.appendChild($text)
   $goals.appendChild($container)
@@ -27,8 +30,8 @@ function makeGoalButton (name, url) {
 }
 
 var muscle = makeGoalButton('muscle', 'https://goo.gl/BnXbr9')
-var fat = makeGoalButton('fat', 'https://goo.gl/IbMmFB')
-var health = makeGoalButton('health', 'https://goo.gl/uJ7yH6')
+var fat = makeGoalButton('fat', 'https://goo.gl/BnXbr9')
+var health = makeGoalButton('health', 'https://goo.gl/BnXbr9')
 
 //FETCH for CREATING user account
 var $formSignup = document.querySelector('#signup')
