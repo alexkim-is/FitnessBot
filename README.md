@@ -4,7 +4,7 @@ Using: Javacript, Express, Knex, Postgresql, Twilio, Api.ai
 
 I am your workout accountability partner/bot.
 
-Sign-up by entering your info along with your preferred workout schedule. I will send you a daily reminder. You can also talk to me and ask questions. I will try to encourage you. I can carry on a decent conversation. If I don't understand you, I'll just tell you a joke instead of being annoying like Siri.
+Sign-up by entering your info along with your preferred workout schedule. I will send you a daily reminder. You can also talk to me and ask questions. I will try to push you to your best. Also I can carry on a decent conversation. If I don't understand you, I'll just tell you a joke instead of being annoying like some other bots. 
 
 ![screen shot 2017-02-10 at 2 04 02 pm](https://cloud.githubusercontent.com/assets/22905837/22846375/097b555c-ef9c-11e6-800f-f6cce031ce9c.png)
 
