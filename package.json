@@ -10,7 +10,9 @@
     "pg": "^6.1.2",
     "twilio": "^2.11.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
   "scripts": {
     "watch": "nodemon .",
     "migrate:make": "knex migrate:make",
