@@ -17,7 +17,8 @@
     "watch": "nodemon .",
     "migrate:make": "knex migrate:make",
     "migrate": "knex migrate:latest",
-    "rollback": "knex migrate:rollback"
+    "rollback": "knex migrate:rollback",
+    "postinstall": "npm run watch"
   },
   "repository": {
     "type": "git",

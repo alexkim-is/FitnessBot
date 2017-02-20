@@ -5,26 +5,37 @@
     <link href="default.css" rel="stylesheet" type="text/css" >
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   </head>
-  <body>
-    <div id="message">
-      <div id="clock-message"></div>
+    <body>
+
+    <div id="message-box">
+      <div id="clock-message" v-text="keyword"></div>
     </div>
+
     <div id="goal-box">
-      <div class="container" id="box1">
-        <h3>Pick your goal</h3>
-      </div>
-      <div class="container" id="box2">
-        <h3>Sign up here!</h3>
-        <form id="signup">
-          <input type="text" name="name" id="f-name" placeholder="Your Name" required><br>
-          <input type="number" name="age" id="f-age" placeholder="Age" minlength="1" maxlength="2" required><br>
-          <input type="tel" name="mobile" id="f-mobile" placeholder="Mobile #" minlength="10" maxlength="11" required><br>
-          <p>Set a reminder. e.g. 5:30 PM</p>
-          <input type="time" name="schedule" id="f-time"><br>
-          <button type="submit" id="submit">SIGN UP</button>
-        </form>
+      <div class="container" id="wrapper">
+        <p id=goal-text>Choose Your Goal</p>
+        <div v-for="goal in goalList" class="card">
+          <a>{{ goal.title }}
+            <img v-bind:src="goal.img" class="images"/>
+            <small>Choose: {{ goal.description }}</small>
+          </a>
+        </div>
       </div>
     </div>
+
+    <div class="container" id="box2">
+      <h3>Sign up here!</h3>
+      <form id="signup">
+        <input type="text" name="name" id="f-name" placeholder="Your Name" required><br>
+        <input type="number" name="age" id="f-age" placeholder="Age" minlength="1" maxlength="2" required><br>
+        <input type="tel" name="mobile" id="f-mobile" placeholder="Mobile #" minlength="10" maxlength="11" required><br>
+        <p>Set a reminder. e.g. 5:30 PM</p>
+        <input type="time" name="schedule" id="f-time"><br>
+        <button type="submit" id="submit">SIGN UP</button>
+      </form>
+    </div>
+
+
 
     <div id="chatbox">
       <p id="chatfont">You can chat with me right here!</p>
@@ -33,7 +44,7 @@
 
     <div id="unsub-box">
     </div>
-    <div id="motivation">
+    <div id="motivation">``
       <p id="blah"></p>
       <div class="container" id="box3">
         <h3>Unsubscribe</h3>
@@ -43,6 +54,8 @@
         </form>
       </div>
     </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="index.js"></script>
   </body>
 </html>
