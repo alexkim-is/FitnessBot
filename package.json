@@ -19,7 +19,7 @@
     "migrate:make": "knex migrate:make",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
-    "postinstall": "npm run watch"
+    "postinstall": "npm run start"
   },
   "repository": {
     "type": "git",
