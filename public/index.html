@@ -3,56 +3,50 @@
   <head>
     <title>FitnessBot</title>
     <link href="default.css" rel="stylesheet" type="text/css" >
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Anton|Oswald|Roboto" rel="stylesheet">
   </head>
-    <body>
 
+    <body>
     <div id="message-box">
       <div id="clock-message" v-text="keyword"></div>
     </div>
 
-    <div id="goal-box">
-      <div class="container" id="wrapper">
-        <p id=goal-text>Choose Your Goal</p>
-        <div v-for="goal in goalList" class="card">
-          <a>{{ goal.title }}
-            <img v-bind:src="goal.img" class="images"/>
-            <small>Choose: {{ goal.description }}</small>
-          </a>
-        </div>
+    <div id="wrapper">
+      <p id="goal-text">Choose Your Goal</p>
+      <label>Search goals:</label>
+      <div id="search-box">
+        <input id="search-area"type="text" v-model="keyword" placeholder="your goal..."/>
+      </div>
+      <button v-on:click="clicked" v-for="goal in filteredList" class="card">
+          <a>{{ goal.title }}</a>
+          <img v-bind:src="goal.img" class="images"/>
+          <p id="goal-description>">{{ goal.description }}</p>
+      </button>
+      <div id="signup-box">
+        <form id="signup">
+          <div id="signuphere">Sign Up Here!</div>
+          <div><input type="text" name="name" id="f-name" placeholder="Your Name" required></div>
+          <div><input type="number" name="age" id="f-age" placeholder="Age" minlength="1" maxlength="2" required></div>
+          <div><input type="tel" name="mobile" id="f-mobile" placeholder="Mobile #" minlength="10" maxlength="11" required></div>
+          <div><p>Set a reminder. e.g. 5:30 PM</p></div>
+          <div><input type="time" name="schedule" id="f-time"></div>
+          <div><button type="submit" id="submit" onclick="alert('Subscribed!')">SIGN UP</button></div>
+        </form>
       </div>
     </div>
 
-    <div class="container" id="box2">
-      <h3>Sign up here!</h3>
-      <form id="signup">
-        <input type="text" name="name" id="f-name" placeholder="Your Name" required><br>
-        <input type="number" name="age" id="f-age" placeholder="Age" minlength="1" maxlength="2" required><br>
-        <input type="tel" name="mobile" id="f-mobile" placeholder="Mobile #" minlength="10" maxlength="11" required><br>
-        <p>Set a reminder. e.g. 5:30 PM</p>
-        <input type="time" name="schedule" id="f-time"><br>
-        <button type="submit" id="submit">SIGN UP</button>
-      </form>
-    </div>
-
-
-
     <div id="chatbox">
-      <p id="chatfont">You can chat with me right here!</p>
+      <p id="chatfont">You can chat with me right here -></p>
       <iframe id="chat" width="350" height="430" src="https://console.api.ai/api-client/demo/embedded/eeba7693-9f28-4470-9e8f-654f32bbdefb"></iframe>
     </div>
 
-    <div id="unsub-box">
-    </div>
-    <div id="motivation">``
-      <p id="blah"></p>
-      <div class="container" id="box3">
+    <div id="motiv-pic"></div>
+    <div id="unsub-box">``
+      <form id="unsub">
         <h3>Unsubscribe</h3>
-        <form id="unsub">
-          <input type="tel" name="b-mobile" id="b-mobile" placeholder="Mobile #" minlength="10" maxlength="11" required><br>
-          <button type="submit" id="submit2">Unsubscribe</button>
-        </form>
-      </div>
+        <input type="tel" name="b-mobile" id="b-mobile" placeholder="Mobile #" minlength="10" maxlength="11" required><br>
+        <button type="submit" id="submit2" onclick="alert('Unsubscribed')">Unsubscribe</button>
+      </form>
     </div>
 
     <script src="https://unpkg.com/vue/dist/vue.js"></script>

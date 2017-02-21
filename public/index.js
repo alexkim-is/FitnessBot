@@ -1,4 +1,3 @@
-
 //Message at the top
 var daysPassed = new Date().getDate()
 var hoursLeft = 23.5 - new Date().getHours()
@@ -20,34 +19,32 @@ class Goal {
 }
 
 const goals = new Vue({
-  el: '#goal-box',
+  el: '#wrapper',
   data: {
     keyword: '',
+    clicked: true,
     goalList: [
-       new Goal(
-         'Muscle',
-         'Go big or go home. Be a hero.',
-         'https://goo.gl/SwD631'
-       ),
-       new Goal(
-         'Muscle',
-         'Go big or go home. Be a hero.',
-         'https://goo.gl/SwD631'
-       ),
-       new Goal(
-         'Muscle',
-         'Go big or go home. Be a hero.',
-         'https://goo.gl/SwD631'
-       ),
-       new Goal(
-         'Muscle',
-         'Go big or go home. Be a hero.',
-         'https://goo.gl/SwD631'
-       )
+       new Goal('Muscle','Muscle. Go big or go home. Be a hero, fast. No pain, no gain.','https://goo.gl/SwD631'),
+       new Goal('Lean','Lean. Abs. Lose fat. Be agile and fast. Get ripped. Healthy','https://goo.gl/p3Bhgd'),
+       new Goal('Healthy','Get healthy. Live long. Improve your cardio. Maybe a little muscle.','https://goo.gl/OIYD1p'),
+       new Goal('Muscle','Muscle. Abs. Go big or go home. Be a hero, fast. Change.','https://goo.gl/SwD631'),
+       new Goal('Lean','Lean. Lose fat. Be agile and fast. Get ripped. Healthy','https://goo.gl/p3Bhgd'),
+       new Goal('Fun','I just wanna have fun while staying healthy. Your new lifestyle','https://goo.gl/OIYD1p')
     ]
+  },
+  methods: {
+    clicked: function() {
+      this.goal.title.setAttribute('style', 'color: blue')
+    }
+  },
+  computed: {
+    filteredList() {
+      return this.goalList.filter((goal) => {
+        return goal.description.toLowerCase().includes(this.keyword.toLowerCase())
+      })
+    }
   }
 })
-
 
 
 //FETCH for CREATING user account
