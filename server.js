@@ -57,13 +57,13 @@ function filterByHour(item) {
   if (hourNow == scheduleHour && minuteNow < scheduleMinute) {
     return item
   }
-  if (hourNow == scheduleHour-1 && scheduleMinute < 15) {
+  if (hourNow == scheduleHour-1 && scheduleMinute < 30) {
     return item
   }
 }
 
 // /Get data from database every 15 minutes(900000s=15min, )
-// var intervalOne = setInterval(getData, 5000)
+var intervalOne = setInterval(getData, 900000)
 
 function getData() {
   var result = knex('users')
@@ -86,6 +86,5 @@ function sendText(data) {
     })
 }
 
-
-app.listen(3000, () => console.log('Listening on port 3000'))
+app.listen(3003, () => console.log('Listening on port 3003'))
 

@@ -2,22 +2,28 @@
   "name": "FitnessBot",
   "version": "1.0.0",
   "description": "I am your workout accountability partner.",
+  "engines": {
+    "node": "6.9.2"
+  },
+  "scripts": {
+    "start": "node",
+    "watch": "nodemon .",
+    "migrate:make": "knex migrate:make",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "heroku-postbuild": "migrate"
+  },
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "knex": "^0.12.6",
     "pg": "^6.1.2",
-    "twilio": "^2.11.1"
+    "twilio": "^2.11.1",
+    "vue": "^2.2.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
-  },
-  "scripts": {
-    "watch": "nodemon .",
-    "migrate:make": "knex migrate:make",
-    "migrate": "knex migrate:latest",
-    "rollback": "knex migrate:rollback"
   },
   "repository": {
     "type": "git",
