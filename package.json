@@ -8,11 +8,10 @@
   "scripts": {
     "start": "node",
     "watch": "nodemon .",
-    "bundle": "babel public/index.js -o public/bundle.js",
     "migrate:make": "knex migrate:make",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
-    "postinstall": "npm run start"
+    "heroku-postbuild": "migrate"
   },
   "main": "server.js",
   "dependencies": {
@@ -20,10 +19,10 @@
     "express": "^4.14.0",
     "knex": "^0.12.6",
     "pg": "^6.1.2",
-    "twilio": "^2.11.1"
+    "twilio": "^2.11.1",
+    "vue": "^2.2.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.23.0",
     "nodemon": "^1.11.0"
   },
   "repository": {

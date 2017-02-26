@@ -15,7 +15,7 @@
       <p id="goal-text">Choose Your Goal</p>
       <label>Search goals:</label>
       <div id="search-box">
-        <input id="search-area"type="text" v-model="keyword" placeholder="your goal..."/>
+        <input id="search-area"type="text" v-model="keyword" placeholder="your goal..."></input>
       </div>
       <button v-on:click="clicked" v-for="goal in filteredList" class="card">
           <a>{{ goal.title }}</a>
@@ -48,8 +48,7 @@
         <button type="submit" id="submit2" onclick="alert('Unsubscribed')">Unsubscribe</button>
       </form>
     </div>
-
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="bundle.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
