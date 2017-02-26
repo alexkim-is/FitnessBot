@@ -2,13 +2,13 @@
 var daysPassed = new Date().getDate()
 var hoursLeft = 23.5 - new Date().getHours()
 
+
 const clockMessage = new Vue({
   el: '#clock-message',
   data: {
     keyword: `${daysPassed} days have passed in 2017. You have ${hoursLeft} hours to get in a great workout today.`
   }
 })
-
 
 class Goal {
   constructor(title, description, img) {
