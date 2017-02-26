@@ -1,5 +1,5 @@
 # FitnessBot
-Using: Javacript, Express, Knex, Postgresql, Twilio, Api.ai
+Using: Javacript, Vue, Express, Knex, Postgresql, Twilio, Api.ai
 
 
 I am your workout accountability partner/bot.
