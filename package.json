@@ -11,18 +11,19 @@
     "migrate:make": "knex migrate:make",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
-    "heroku-postbuild": "migrate"
+    "heroku-postbuild": "npm run migrate"
   },
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "knex": "^0.12.6",
-    "pg": "^6.1.2",
+    "pg": "^6.1.5",
     "twilio": "^2.11.1",
     "vue": "^2.2.0"
   },
   "devDependencies": {
+    "dotenv": "^4.0.0",
     "nodemon": "^1.11.0"
   },
   "repository": {
