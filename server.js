@@ -1,8 +1,11 @@
+require('dotenv/config')
+
 const express        = require('express')
 const bodyParser     = require('body-parser')
 const pg             = require('pg')
-const client         = require('twilio')(process.env.accountSid, process.env.authToken)
-//export accountSid=//
+const accountSid = process.env.TWILIO_ACCOUNT_SID
+const authToken = process.env.TWILIO_AUTH_TOKEN
+const client         = require('twilio')(accountSid, authToken)
 
 const knex           = require('knex')({
   client: 'postgresql',
@@ -13,6 +16,8 @@ const knex           = require('knex')({
 })
 
 const app = express()
+
+const PORT = process.env.PORT || 3003
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true}))
@@ -86,5 +91,5 @@ function sendText(data) {
     })
 }
 
-app.listen(3003, () => console.log('Listening on port 3003'))
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
 
