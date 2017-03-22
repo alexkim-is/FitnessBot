@@ -11,7 +11,7 @@
     "migrate:make": "knex migrate:make",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
-    "heroku-postbuild": "npm run migrate"
+    "heroku-postbuild": "migrate:make"
   },
   "main": "server.js",
   "dependencies": {
