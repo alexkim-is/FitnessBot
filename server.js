@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true}))
 app.use(express.static('public'))
 
 //Store user data in database
-app.post('/signup', function (req, res)  {
+app.post('/signup', function (req, res) {
   knex('users')
     .insert({
       name: req.body.name,
@@ -35,6 +35,7 @@ app.post('/signup', function (req, res)  {
     })
     .then(() => res.send(`${req.body.name}, welcome to the club!`))
     .catch((err) => console.error(err))
+
 })
 
 
@@ -91,3 +92,4 @@ function sendText(data) {
 }
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
+
